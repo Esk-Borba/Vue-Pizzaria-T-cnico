@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pro_chef_webModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="dados_bebida">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" />
+    <Property Name="sabor" Type="varchar" MaxLength="50" />
+    <Property Name="tamanho" Type="varchar" MaxLength="50" />
+    <Property Name="preco" Type="int" />
+  </EntityType>
+  <EntityType Name="dados_cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cpf" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="telefone" Type="int" Nullable="false" />
+    <Property Name="usuario" Type="nchar" MaxLength="8" Nullable="false" />
+    <Property Name="senha" Type="nchar" MaxLength="8" Nullable="false" />
+    <Property Name="cep" Type="int" Nullable="false" />
+    <Property Name="logradouro" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="complemento" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="bairro" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cidade" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="uf" Type="nchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="dados_pedido">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="observacoes" Type="varchar" MaxLength="50" />
+    <Property Name="borda" Type="varchar" MaxLength="50" />
+    <Property Name="preco_borda" Type="varchar" MaxLength="50" />
+    <Property Name="tamanho" Type="varchar" MaxLength="50" />
+    <Property Name="preco_tamanho" Type="varchar" MaxLength="50" />
+    <Property Name="forma_pagamento" Type="varchar" MaxLength="50" />
+    <Property Name="retirar_pizzaria" Type="bit" />
+    <Property Name="total" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="dados_pizza">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sabor" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="pro_chef_webModelStoreContainer">
+    <EntitySet Name="dados_bebida" EntityType="Self.dados_bebida" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dados_cliente" EntityType="Self.dados_cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dados_pedido" EntityType="Self.dados_pedido" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dados_pizza" EntityType="Self.dados_pizza" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
