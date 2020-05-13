@@ -13,11 +13,17 @@ namespace Sa_pro_chefe.Controllers
     public class PizzaController : ApiController
     {
         // GET: api/Pizza
-        public IEnumerable<string> Get()
+        public IEnumerable<dynamic> Get()
         {
             using (pro_chef_webEntities bd = new pro_chef_webEntities())
             {
-                return new string[] { "value1", "value2" };
+                var pizza = from pz in bd.dados_pizza
+                            select new
+                            {
+                                pz.id,
+                                pz.sabor
+                            };
+                return pizza.ToList();
             }
         }
 

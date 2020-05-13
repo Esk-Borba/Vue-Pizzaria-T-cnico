@@ -9,16 +9,17 @@ using Sa_pro_chefe.Models;
 
 namespace Sa_pro_chefe.Controllers
 {
-
     [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
     public class UsuarioController : ApiController
     {
         // GET: api/Usuario
-        public IEnumerable<string> Get()
+        public IEnumerable<dynamic> Get()
         {
             using (pro_chef_webEntities bd = new pro_chef_webEntities())
             {
-                return new string[] { "value1", "value2" };
+                var usuario = from user in bd.dados_cliente
+                              select new { user.id, user.cpf, user.nome, user.telefone, user.usuario, user.senha, user.cep, user.logradouro, user.complemento, user.bairro, user.cidade, user.uf };
+                return usuario.ToList();
             }
             
         }

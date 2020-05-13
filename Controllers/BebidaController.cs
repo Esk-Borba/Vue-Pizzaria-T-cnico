@@ -13,11 +13,13 @@ namespace Sa_pro_chefe.Controllers
     public class BebidaController : ApiController
     {
         // GET: api/Bebida
-        public IEnumerable<string> Get()
+        public IEnumerable<dynamic> Get()
         {
             using (pro_chef_webEntities bd = new pro_chef_webEntities())
             {
-                return new string[] { "value1", "value2" };
+                var bebidas = from bebe in bd.dados_bebida
+                              select new { bebe.id, bebe.tamanho, bebe.tipo, bebe.sabor, bebe.preco };
+                return bebidas.ToList();
             }
         }
 

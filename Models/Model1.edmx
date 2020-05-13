@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="pro_chef_webModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="pro_chef_webModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="dados_bebida">
           <Key>
             <PropertyRef Name="id" />
@@ -59,11 +59,16 @@
           <EntitySet Name="dados_pedido" EntityType="Self.dados_pedido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dados_pizza" EntityType="Self.dados_pizza" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="pro_chef_webModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="pro_chef_webEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dados_bebida" EntityType="pro_chef_webModel.dados_bebida" />
+          <EntitySet Name="dados_cliente" EntityType="pro_chef_webModel.dados_cliente" />
+          <EntitySet Name="dados_pedido" EntityType="pro_chef_webModel.dados_pedido" />
+          <EntitySet Name="dados_pizza" EntityType="pro_chef_webModel.dados_pizza" />
+        </EntityContainer>
         <EntityType Name="dados_bebida">
           <Key>
             <PropertyRef Name="id" />
@@ -79,17 +84,17 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cpf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cpf" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="telefone" Type="Int32" Nullable="false" />
-          <Property Name="usuario" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="senha" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="senha" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
           <Property Name="cep" Type="Int32" Nullable="false" />
-          <Property Name="logradouro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="uf" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="logradouro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="complemento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bairro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cidade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uf" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="dados_pedido">
           <Key>
@@ -112,12 +117,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="sabor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="pro_chef_webEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="dados_bebida" EntityType="Self.dados_bebida" />
-          <EntitySet Name="dados_cliente" EntityType="Self.dados_cliente" />
-          <EntitySet Name="dados_pedido" EntityType="Self.dados_pedido" />
-          <EntitySet Name="dados_pizza" EntityType="Self.dados_pizza" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -127,52 +126,52 @@
           <EntitySetMapping Name="dados_bebida">
             <EntityTypeMapping TypeName="pro_chef_webModel.dados_bebida">
               <MappingFragment StoreEntitySet="dados_bebida">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="sabor" ColumnName="sabor" />
-                <ScalarProperty Name="tamanho" ColumnName="tamanho" />
                 <ScalarProperty Name="preco" ColumnName="preco" />
+                <ScalarProperty Name="tamanho" ColumnName="tamanho" />
+                <ScalarProperty Name="sabor" ColumnName="sabor" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="dados_cliente">
             <EntityTypeMapping TypeName="pro_chef_webModel.dados_cliente">
               <MappingFragment StoreEntitySet="dados_cliente">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="cpf" ColumnName="cpf" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="telefone" ColumnName="telefone" />
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="senha" ColumnName="senha" />
-                <ScalarProperty Name="cep" ColumnName="cep" />
-                <ScalarProperty Name="logradouro" ColumnName="logradouro" />
-                <ScalarProperty Name="complemento" ColumnName="complemento" />
-                <ScalarProperty Name="bairro" ColumnName="bairro" />
-                <ScalarProperty Name="cidade" ColumnName="cidade" />
                 <ScalarProperty Name="uf" ColumnName="uf" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="complemento" ColumnName="complemento" />
+                <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="dados_pedido">
             <EntityTypeMapping TypeName="pro_chef_webModel.dados_pedido">
               <MappingFragment StoreEntitySet="dados_pedido">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="observacoes" ColumnName="observacoes" />
-                <ScalarProperty Name="borda" ColumnName="borda" />
-                <ScalarProperty Name="preco_borda" ColumnName="preco_borda" />
-                <ScalarProperty Name="tamanho" ColumnName="tamanho" />
-                <ScalarProperty Name="preco_tamanho" ColumnName="preco_tamanho" />
-                <ScalarProperty Name="forma_pagamento" ColumnName="forma_pagamento" />
-                <ScalarProperty Name="retirar_pizzaria" ColumnName="retirar_pizzaria" />
                 <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="retirar_pizzaria" ColumnName="retirar_pizzaria" />
+                <ScalarProperty Name="forma_pagamento" ColumnName="forma_pagamento" />
+                <ScalarProperty Name="preco_tamanho" ColumnName="preco_tamanho" />
+                <ScalarProperty Name="tamanho" ColumnName="tamanho" />
+                <ScalarProperty Name="preco_borda" ColumnName="preco_borda" />
+                <ScalarProperty Name="borda" ColumnName="borda" />
+                <ScalarProperty Name="observacoes" ColumnName="observacoes" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="dados_pizza">
             <EntityTypeMapping TypeName="pro_chef_webModel.dados_pizza">
               <MappingFragment StoreEntitySet="dados_pizza">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="sabor" ColumnName="sabor" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
