@@ -17,15 +17,15 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="cpf" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="telefone" Type="int" Nullable="false" />
-    <Property Name="usuario" Type="nchar" MaxLength="8" Nullable="false" />
-    <Property Name="senha" Type="nchar" MaxLength="8" Nullable="false" />
-    <Property Name="cep" Type="int" Nullable="false" />
+    <Property Name="telefone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="senha" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="cep" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="logradouro" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="complemento" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="bairro" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="cidade" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="uf" Type="nchar" MaxLength="2" Nullable="false" />
+    <Property Name="uf" Type="varchar" MaxLength="2" Nullable="false" />
   </EntityType>
   <EntityType Name="dados_pedido">
     <Key>
