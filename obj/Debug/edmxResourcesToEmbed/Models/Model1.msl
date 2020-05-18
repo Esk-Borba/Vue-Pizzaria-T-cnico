@@ -12,6 +12,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="dados_borda">
+      <EntityTypeMapping TypeName="pro_chef_webModel.dados_borda">
+        <MappingFragment StoreEntitySet="dados_borda">
+          <ScalarProperty Name="preco_borda" ColumnName="preco_borda" />
+          <ScalarProperty Name="borda" ColumnName="borda" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="dados_cliente">
       <EntityTypeMapping TypeName="pro_chef_webModel.dados_cliente">
         <MappingFragment StoreEntitySet="dados_cliente">
@@ -36,9 +45,7 @@
           <ScalarProperty Name="total" ColumnName="total" />
           <ScalarProperty Name="retirar_pizzaria" ColumnName="retirar_pizzaria" />
           <ScalarProperty Name="forma_pagamento" ColumnName="forma_pagamento" />
-          <ScalarProperty Name="preco_tamanho" ColumnName="preco_tamanho" />
           <ScalarProperty Name="tamanho" ColumnName="tamanho" />
-          <ScalarProperty Name="preco_borda" ColumnName="preco_borda" />
           <ScalarProperty Name="borda" ColumnName="borda" />
           <ScalarProperty Name="observacoes" ColumnName="observacoes" />
           <ScalarProperty Name="id" ColumnName="id" />
@@ -49,6 +56,15 @@
       <EntityTypeMapping TypeName="pro_chef_webModel.dados_pizza">
         <MappingFragment StoreEntitySet="dados_pizza">
           <ScalarProperty Name="sabor" ColumnName="sabor" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dados_pizza_tamanho">
+      <EntityTypeMapping TypeName="pro_chef_webModel.dados_pizza_tamanho">
+        <MappingFragment StoreEntitySet="dados_pizza_tamanho">
+          <ScalarProperty Name="preco_tamanho" ColumnName="preco_tamanho" />
+          <ScalarProperty Name="tamanho" ColumnName="tamanho" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

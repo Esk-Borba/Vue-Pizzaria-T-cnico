@@ -26,8 +26,10 @@ namespace Sa_pro_chefe.Models
         }
     
         public virtual DbSet<dados_bebida> dados_bebida { get; set; }
+        public virtual DbSet<dados_borda> dados_borda { get; set; }
         public virtual DbSet<dados_cliente> dados_cliente { get; set; }
         public virtual DbSet<dados_pedido> dados_pedido { get; set; }
         public virtual DbSet<dados_pizza> dados_pizza { get; set; }
+        public virtual DbSet<dados_pizza_tamanho> dados_pizza_tamanho { get; set; }
     }
 }

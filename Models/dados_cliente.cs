@@ -17,10 +17,10 @@ namespace Sa_pro_chefe.Models
         public int id { get; set; }
         public string cpf { get; set; }
         public string nome { get; set; }
-        public string telefone { get; set; }
+        public int telefone { get; set; }
         public string usuario { get; set; }
         public string senha { get; set; }
-        public string cep { get; set; }
+        public int cep { get; set; }
         public string logradouro { get; set; }
         public string complemento { get; set; }
         public string bairro { get; set; }

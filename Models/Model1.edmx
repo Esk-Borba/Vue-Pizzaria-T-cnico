@@ -15,6 +15,14 @@
           <Property Name="tamanho" Type="varchar" MaxLength="50" />
           <Property Name="preco" Type="int" />
         </EntityType>
+        <EntityType Name="dados_borda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="borda" Type="varchar" MaxLength="50" />
+          <Property Name="preco_borda" Type="int" />
+        </EntityType>
         <EntityType Name="dados_cliente">
           <Key>
             <PropertyRef Name="id" />
@@ -22,15 +30,15 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cpf" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="telefone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefone" Type="int" Nullable="false" />
           <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="senha" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="cep" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cep" Type="int" Nullable="false" />
           <Property Name="logradouro" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="complemento" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="bairro" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="cidade" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="uf" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="uf" Type="nchar" MaxLength="2" Nullable="false" />
         </EntityType>
         <EntityType Name="dados_pedido">
           <Key>
@@ -39,9 +47,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="observacoes" Type="varchar" MaxLength="50" />
           <Property Name="borda" Type="varchar" MaxLength="50" />
-          <Property Name="preco_borda" Type="varchar" MaxLength="50" />
           <Property Name="tamanho" Type="varchar" MaxLength="50" />
-          <Property Name="preco_tamanho" Type="varchar" MaxLength="50" />
           <Property Name="forma_pagamento" Type="varchar" MaxLength="50" />
           <Property Name="retirar_pizzaria" Type="bit" />
           <Property Name="total" Type="varchar" MaxLength="50" />
@@ -53,11 +59,21 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="sabor" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="dados_pizza_tamanho">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tamanho" Type="varchar" MaxLength="50" />
+          <Property Name="preco_tamanho" Type="int" />
+        </EntityType>
         <EntityContainer Name="pro_chef_webModelStoreContainer">
           <EntitySet Name="dados_bebida" EntityType="Self.dados_bebida" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dados_borda" EntityType="Self.dados_borda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dados_cliente" EntityType="Self.dados_cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dados_pedido" EntityType="Self.dados_pedido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dados_pizza" EntityType="Self.dados_pizza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dados_pizza_tamanho" EntityType="Self.dados_pizza_tamanho" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -65,9 +81,11 @@
       <Schema Namespace="pro_chef_webModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="pro_chef_webEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="dados_bebida" EntityType="pro_chef_webModel.dados_bebida" />
+          <EntitySet Name="dados_borda" EntityType="pro_chef_webModel.dados_borda" />
           <EntitySet Name="dados_cliente" EntityType="pro_chef_webModel.dados_cliente" />
           <EntitySet Name="dados_pedido" EntityType="pro_chef_webModel.dados_pedido" />
           <EntitySet Name="dados_pizza" EntityType="pro_chef_webModel.dados_pizza" />
+          <EntitySet Name="dados_pizza_tamanho" EntityType="pro_chef_webModel.dados_pizza_tamanho" />
         </EntityContainer>
         <EntityType Name="dados_bebida">
           <Key>
@@ -79,6 +97,14 @@
           <Property Name="tamanho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="preco" Type="Int32" />
         </EntityType>
+        <EntityType Name="dados_borda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="borda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="preco_borda" Type="Int32" />
+        </EntityType>
         <EntityType Name="dados_cliente">
           <Key>
             <PropertyRef Name="id" />
@@ -86,15 +112,15 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cpf" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="telefone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefone" Type="Int32" Nullable="false" />
           <Property Name="usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="senha" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="cep" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cep" Type="Int32" Nullable="false" />
           <Property Name="logradouro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="complemento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="bairro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="cidade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="uf" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="uf" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="dados_pedido">
           <Key>
@@ -103,9 +129,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="observacoes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="borda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="preco_borda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="tamanho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="preco_tamanho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="forma_pagamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="retirar_pizzaria" Type="Boolean" />
           <Property Name="total" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -116,6 +140,14 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="sabor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="dados_pizza_tamanho">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tamanho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="preco_tamanho" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -130,6 +162,15 @@
                 <ScalarProperty Name="tamanho" ColumnName="tamanho" />
                 <ScalarProperty Name="sabor" ColumnName="sabor" />
                 <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dados_borda">
+            <EntityTypeMapping TypeName="pro_chef_webModel.dados_borda">
+              <MappingFragment StoreEntitySet="dados_borda">
+                <ScalarProperty Name="preco_borda" ColumnName="preco_borda" />
+                <ScalarProperty Name="borda" ColumnName="borda" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -158,9 +199,7 @@
                 <ScalarProperty Name="total" ColumnName="total" />
                 <ScalarProperty Name="retirar_pizzaria" ColumnName="retirar_pizzaria" />
                 <ScalarProperty Name="forma_pagamento" ColumnName="forma_pagamento" />
-                <ScalarProperty Name="preco_tamanho" ColumnName="preco_tamanho" />
                 <ScalarProperty Name="tamanho" ColumnName="tamanho" />
-                <ScalarProperty Name="preco_borda" ColumnName="preco_borda" />
                 <ScalarProperty Name="borda" ColumnName="borda" />
                 <ScalarProperty Name="observacoes" ColumnName="observacoes" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -171,6 +210,15 @@
             <EntityTypeMapping TypeName="pro_chef_webModel.dados_pizza">
               <MappingFragment StoreEntitySet="dados_pizza">
                 <ScalarProperty Name="sabor" ColumnName="sabor" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dados_pizza_tamanho">
+            <EntityTypeMapping TypeName="pro_chef_webModel.dados_pizza_tamanho">
+              <MappingFragment StoreEntitySet="dados_pizza_tamanho">
+                <ScalarProperty Name="preco_tamanho" ColumnName="preco_tamanho" />
+                <ScalarProperty Name="tamanho" ColumnName="tamanho" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

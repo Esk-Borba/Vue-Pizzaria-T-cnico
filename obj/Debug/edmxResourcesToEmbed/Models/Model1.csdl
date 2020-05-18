@@ -2,9 +2,11 @@
 <Schema Namespace="pro_chef_webModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="pro_chef_webEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="dados_bebida" EntityType="pro_chef_webModel.dados_bebida" />
+    <EntitySet Name="dados_borda" EntityType="pro_chef_webModel.dados_borda" />
     <EntitySet Name="dados_cliente" EntityType="pro_chef_webModel.dados_cliente" />
     <EntitySet Name="dados_pedido" EntityType="pro_chef_webModel.dados_pedido" />
     <EntitySet Name="dados_pizza" EntityType="pro_chef_webModel.dados_pizza" />
+    <EntitySet Name="dados_pizza_tamanho" EntityType="pro_chef_webModel.dados_pizza_tamanho" />
   </EntityContainer>
   <EntityType Name="dados_bebida">
     <Key>
@@ -16,6 +18,14 @@
     <Property Name="tamanho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="preco" Type="Int32" />
   </EntityType>
+  <EntityType Name="dados_borda">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="borda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="preco_borda" Type="Int32" />
+  </EntityType>
   <EntityType Name="dados_cliente">
     <Key>
       <PropertyRef Name="id" />
@@ -23,15 +33,15 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="cpf" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="telefone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telefone" Type="Int32" Nullable="false" />
     <Property Name="usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="senha" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="cep" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cep" Type="Int32" Nullable="false" />
     <Property Name="logradouro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="complemento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="bairro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="cidade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="uf" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="uf" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="dados_pedido">
     <Key>
@@ -40,9 +50,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="observacoes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="borda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="preco_borda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="tamanho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="preco_tamanho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="forma_pagamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="retirar_pizzaria" Type="Boolean" />
     <Property Name="total" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -53,5 +61,13 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="sabor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="dados_pizza_tamanho">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tamanho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="preco_tamanho" Type="Int32" />
   </EntityType>
 </Schema>

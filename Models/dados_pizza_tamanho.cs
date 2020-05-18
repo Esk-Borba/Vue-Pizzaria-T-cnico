@@ -12,14 +12,10 @@ namespace Sa_pro_chefe.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class dados_pedido
+    public partial class dados_pizza_tamanho
     {
         public int id { get; set; }
-        public string observacoes { get; set; }
-        public string borda { get; set; }
         public string tamanho { get; set; }
-        public string forma_pagamento { get; set; }
-        public Nullable<bool> retirar_pizzaria { get; set; }
-        public string total { get; set; }
+        public Nullable<int> preco_tamanho { get; set; }
     }
 }

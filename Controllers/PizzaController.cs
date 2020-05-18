@@ -34,18 +34,40 @@ namespace Sa_pro_chefe.Controllers
         }
 
         // POST: api/Pizza
-        public void Post([FromBody]string value)
+        public string Post([FromBody]dados_pizza pizza)
         {
+            using (pro_chef_webEntities bd = new pro_chef_webEntities())
+            {
+                bd.dados_pizza.Add(pizza);
+                bd.SaveChanges();
+                return "Salvo com sucesso";
+            }
+
         }
 
         // PUT: api/Pizza/5
-        public void Put(int id, [FromBody]string value)
+        public string Put(int id, [FromBody] dados_pizza pizza)
         {
+            using (pro_chef_webEntities bd = new pro_chef_webEntities())
+            {
+                dados_pizza userAlterar = bd.dados_pizza.Find(id);
+                userAlterar.sabor = pizza.sabor;
+                bd.SaveChanges();
+                return "Salvo com Sucesso";
+            }
         }
-
         // DELETE: api/Pizza/5
-        public void Delete(int id)
+        public string Delete(int id)
         {
+            using (pro_chef_webEntities bd = new pro_chef_webEntities())
+            {
+                bd.dados_pizza.Remove(bd.dados_pizza.Find(id));
+                bd.SaveChanges();
+                return "Removido com sucesso";
+            }
         }
     }
+
+    
 }
+
