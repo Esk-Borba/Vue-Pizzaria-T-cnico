@@ -6,8 +6,7 @@
         <MappingFragment StoreEntitySet="dados_bebida">
           <ScalarProperty Name="preco" ColumnName="preco" />
           <ScalarProperty Name="tamanho" ColumnName="tamanho" />
-          <ScalarProperty Name="sabor" ColumnName="sabor" />
-          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="bebida" ColumnName="bebida" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

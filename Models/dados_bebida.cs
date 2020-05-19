@@ -15,8 +15,7 @@ namespace Sa_pro_chefe.Models
     public partial class dados_bebida
     {
         public int id { get; set; }
-        public string tipo { get; set; }
-        public string sabor { get; set; }
+        public string bebida { get; set; }
         public string tamanho { get; set; }
         public Nullable<int> preco { get; set; }
     }
