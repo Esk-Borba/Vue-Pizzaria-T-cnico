@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -18,7 +19,7 @@ namespace Sa_pro_chefe.Controllers
             using (pro_chef_webEntities bd = new pro_chef_webEntities())
             {
                 var bebidas = from bebe in bd.dados_bebida
-                              select new { bebe.id, bebe.tamanho, bebe.tipo, bebe.sabor, bebe.preco };
+                              select new { bebe.id, bebe.tamanho, bebe.bebida, bebe.preco };
                 return bebidas.ToList();
             }
         }
@@ -30,18 +31,39 @@ namespace Sa_pro_chefe.Controllers
         }
 
         // POST: api/Bebida
-        public void Post([FromBody]string value)
+        public string Post([FromBody]dados_bebida bebida)
         {
+            using(pro_chef_webEntities bd = new pro_chef_webEntities())
+            {
+                bd.dados_bebida.Add(bebida);
+                bd.SaveChanges();
+                return "Salvo com sucesso";
+            }
         }
 
         // PUT: api/Bebida/5
-        public void Put(int id, [FromBody]string value)
+        public string Put(int id, [FromBody]dados_bebida bebida)
         {
+            using (pro_chef_webEntities bd = new pro_chef_webEntities())
+            {
+                dados_bebida bebidaAlterar = bd.dados_bebida.Find(id);
+                bebidaAlterar.bebida = bebida.bebida;
+                bebidaAlterar.preco = bebida.preco;
+                bebidaAlterar.tamanho = bebida.tamanho;
+                bd.SaveChanges();
+                return "Salvo com sucesso";
+            }
         }
 
         // DELETE: api/Bebida/5
-        public void Delete(int id)
+        public string Delete(int id)
         {
+            using(pro_chef_webEntities bd = new pro_chef_webEntities())
+            {
+                bd.dados_bebida.Remove(bd.dados_bebida.Find(id));
+                bd.SaveChanges();
+                return "Salvo com sucessos";
+            }
         }
     }
 }

@@ -5,8 +5,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="tipo" Type="varchar" MaxLength="50" />
-    <Property Name="sabor" Type="varchar" MaxLength="50" />
+    <Property Name="bebida" Type="varchar" MaxLength="50" />
     <Property Name="tamanho" Type="varchar" MaxLength="50" />
     <Property Name="preco" Type="int" />
   </EntityType>
@@ -25,10 +24,10 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="cpf" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="telefone" Type="int" Nullable="false" />
+    <Property Name="telefone" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="senha" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="cep" Type="int" Nullable="false" />
+    <Property Name="cep" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="logradouro" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="complemento" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="bairro" Type="varchar" MaxLength="50" Nullable="false" />
