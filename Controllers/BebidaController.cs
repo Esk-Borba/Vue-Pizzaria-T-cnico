@@ -33,14 +33,22 @@ namespace Sa_pro_chefe.Controllers
         // POST: api/Bebida
         public string Post([FromBody]dados_bebida bebida)
         {
+<<<<<<< HEAD
             using(pro_chef_webEntities bd = new pro_chef_webEntities())
+=======
+            using (pro_chef_webEntities bd = new pro_chef_webEntities())
+>>>>>>> caa0d7054ada6c5d298bac4f7838842a3946552c
             {
                 bd.dados_bebida.Add(bebida);
                 bd.SaveChanges();
                 return "Salvo com sucesso";
             }
+<<<<<<< HEAD
         }
+=======
+>>>>>>> caa0d7054ada6c5d298bac4f7838842a3946552c
 
+        }
         // PUT: api/Bebida/5
         public string Put(int id, [FromBody]dados_bebida bebida)
         {
@@ -48,22 +56,41 @@ namespace Sa_pro_chefe.Controllers
             {
                 dados_bebida bebidaAlterar = bd.dados_bebida.Find(id);
                 bebidaAlterar.bebida = bebida.bebida;
+<<<<<<< HEAD
                 bebidaAlterar.preco = bebida.preco;
                 bebidaAlterar.tamanho = bebida.tamanho;
                 bd.SaveChanges();
                 return "Salvo com sucesso";
             }
+=======
+                bebidaAlterar.tamanho = bebida.tamanho;
+                bebidaAlterar.preco = bebida.preco;
+                bd.SaveChanges();
+                return "Salvo com sucesso";
+            }
+
+>>>>>>> caa0d7054ada6c5d298bac4f7838842a3946552c
         }
 
         // DELETE: api/Bebida/5
         public string Delete(int id)
         {
+<<<<<<< HEAD
             using(pro_chef_webEntities bd = new pro_chef_webEntities())
             {
                 bd.dados_bebida.Remove(bd.dados_bebida.Find(id));
                 bd.SaveChanges();
                 return "Salvo com sucessos";
             }
+=======
+            using (pro_chef_webEntities bd = new pro_chef_webEntities())
+            {
+                bd.dados_bebida.Remove(bd.dados_bebida.Find(id));
+                bd.SaveChanges();
+                return "Removido com sucesso";
+            }
+
+>>>>>>> caa0d7054ada6c5d298bac4f7838842a3946552c
         }
     }
 }
