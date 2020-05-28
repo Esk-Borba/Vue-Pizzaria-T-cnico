@@ -19,7 +19,14 @@ namespace Sa_pro_chefe.Models
         public string borda { get; set; }
         public string tamanho { get; set; }
         public string forma_pagamento { get; set; }
-        public Nullable<bool> retirar_pizzaria { get; set; }
+        public bool retirar_pizzaria { get; set; }
         public string total { get; set; }
+        public Nullable<int> entregador { get; set; }
+        public Nullable<int> admin { get; set; }
+        public Nullable<int> tipo_pagamento { get; set; }
+    
+        public virtual administrador administrador { get; set; }
+        public virtual entregador entregador1 { get; set; }
+        public virtual pagamento pagamento { get; set; }
     }
 }

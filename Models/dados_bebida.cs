@@ -16,7 +16,5 @@ namespace Sa_pro_chefe.Models
     {
         public int id { get; set; }
         public string bebida { get; set; }
-        public string tamanho { get; set; }
-        public Nullable<int> preco { get; set; }
     }
 }

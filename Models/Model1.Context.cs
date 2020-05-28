@@ -25,11 +25,16 @@ namespace Sa_pro_chefe.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<administrador> administrador { get; set; }
         public virtual DbSet<dados_bebida> dados_bebida { get; set; }
         public virtual DbSet<dados_borda> dados_borda { get; set; }
         public virtual DbSet<dados_cliente> dados_cliente { get; set; }
         public virtual DbSet<dados_pedido> dados_pedido { get; set; }
         public virtual DbSet<dados_pizza> dados_pizza { get; set; }
         public virtual DbSet<dados_pizza_tamanho> dados_pizza_tamanho { get; set; }
+        public virtual DbSet<entregador> entregador { get; set; }
+        public virtual DbSet<pagamento> pagamento { get; set; }
+        public virtual DbSet<preco_bebidas> preco_bebidas { get; set; }
+        public virtual DbSet<tipo_usuario> tipo_usuario { get; set; }
     }
 }

@@ -1,11 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="pro_chef_webModelStoreContainer" CdmEntityContainer="pro_chef_webEntities">
+    <EntitySetMapping Name="administrador">
+      <EntityTypeMapping TypeName="pro_chef_webModel.administrador">
+        <MappingFragment StoreEntitySet="administrador">
+          <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="dados_bebida">
       <EntityTypeMapping TypeName="pro_chef_webModel.dados_bebida">
         <MappingFragment StoreEntitySet="dados_bebida">
-          <ScalarProperty Name="preco" ColumnName="preco" />
-          <ScalarProperty Name="tamanho" ColumnName="tamanho" />
           <ScalarProperty Name="bebida" ColumnName="bebida" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
@@ -23,6 +32,7 @@
     <EntitySetMapping Name="dados_cliente">
       <EntityTypeMapping TypeName="pro_chef_webModel.dados_cliente">
         <MappingFragment StoreEntitySet="dados_cliente">
+          <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
           <ScalarProperty Name="uf" ColumnName="uf" />
           <ScalarProperty Name="cidade" ColumnName="cidade" />
           <ScalarProperty Name="bairro" ColumnName="bairro" />
@@ -41,6 +51,9 @@
     <EntitySetMapping Name="dados_pedido">
       <EntityTypeMapping TypeName="pro_chef_webModel.dados_pedido">
         <MappingFragment StoreEntitySet="dados_pedido">
+          <ScalarProperty Name="tipo_pagamento" ColumnName="tipo_pagamento" />
+          <ScalarProperty Name="admin" ColumnName="admin" />
+          <ScalarProperty Name="entregador" ColumnName="entregador" />
           <ScalarProperty Name="total" ColumnName="total" />
           <ScalarProperty Name="retirar_pizzaria" ColumnName="retirar_pizzaria" />
           <ScalarProperty Name="forma_pagamento" ColumnName="forma_pagamento" />
@@ -64,6 +77,44 @@
         <MappingFragment StoreEntitySet="dados_pizza_tamanho">
           <ScalarProperty Name="preco_tamanho" ColumnName="preco_tamanho" />
           <ScalarProperty Name="tamanho" ColumnName="tamanho" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="entregador">
+      <EntityTypeMapping TypeName="pro_chef_webModel.entregador">
+        <MappingFragment StoreEntitySet="entregador">
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+          <ScalarProperty Name="disponibilidade" ColumnName="disponibilidade" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pagamento">
+      <EntityTypeMapping TypeName="pro_chef_webModel.pagamento">
+        <MappingFragment StoreEntitySet="pagamento">
+          <ScalarProperty Name="tipo_pagamento" ColumnName="tipo_pagamento" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="preco_bebidas">
+      <EntityTypeMapping TypeName="pro_chef_webModel.preco_bebidas">
+        <MappingFragment StoreEntitySet="preco_bebidas">
+          <ScalarProperty Name="preco" ColumnName="preco" />
+          <ScalarProperty Name="tamanho" ColumnName="tamanho" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_usuario">
+      <EntityTypeMapping TypeName="pro_chef_webModel.tipo_usuario">
+        <MappingFragment StoreEntitySet="tipo_usuario">
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

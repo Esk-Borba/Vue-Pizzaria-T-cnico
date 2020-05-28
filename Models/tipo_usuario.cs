@@ -12,20 +12,9 @@ namespace Sa_pro_chefe.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class dados_cliente
+    public partial class tipo_usuario
     {
         public int id { get; set; }
-        public string cpf { get; set; }
-        public string nome { get; set; }
-        public string telefone { get; set; }
-        public string usuario { get; set; }
-        public string senha { get; set; }
-        public string cep { get; set; }
-        public string logradouro { get; set; }
-        public string complemento { get; set; }
-        public string bairro { get; set; }
-        public string cidade { get; set; }
-        public string uf { get; set; }
-        public int tipo_usuario { get; set; }
+        public string tipo { get; set; }
     }
 }

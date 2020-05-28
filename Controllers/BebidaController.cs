@@ -19,7 +19,7 @@ namespace Sa_pro_chefe.Controllers
             using (pro_chef_webEntities bd = new pro_chef_webEntities())
             {
                 var bebidas = from bebe in bd.dados_bebida
-                              select new { bebe.id, bebe.tamanho, bebe.bebida, bebe.preco };
+                              select new { bebe.id, bebe.bebida };
                 return bebidas.ToList();
             }
         }
@@ -47,8 +47,6 @@ namespace Sa_pro_chefe.Controllers
             {
                 dados_bebida bebidaAlterar = bd.dados_bebida.Find(id);
                 bebidaAlterar.bebida = bebida.bebida;
-                bebidaAlterar.preco = bebida.preco;
-                bebidaAlterar.tamanho = bebida.tamanho;
                 bd.SaveChanges();
                 return "Salvo com sucesso";
             }

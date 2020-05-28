@@ -12,20 +12,23 @@ namespace Sa_pro_chefe.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class dados_cliente
+    public partial class entregador
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public entregador()
+        {
+            this.dados_pedido = new HashSet<dados_pedido>();
+        }
+    
         public int id { get; set; }
-        public string cpf { get; set; }
         public string nome { get; set; }
-        public string telefone { get; set; }
+        public int codigo { get; set; }
+        public bool disponibilidade { get; set; }
+        public int tipo_usuario { get; set; }
         public string usuario { get; set; }
         public string senha { get; set; }
-        public string cep { get; set; }
-        public string logradouro { get; set; }
-        public string complemento { get; set; }
-        public string bairro { get; set; }
-        public string cidade { get; set; }
-        public string uf { get; set; }
-        public int tipo_usuario { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<dados_pedido> dados_pedido { get; set; }
     }
 }
