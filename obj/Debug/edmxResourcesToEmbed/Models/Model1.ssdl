@@ -85,6 +85,22 @@
     <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="senha" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="entregas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_cliente" Type="int" />
+    <Property Name="cliente" Type="varchar" MaxLength="50" />
+    <Property Name="sabor1" Type="varchar" MaxLength="50" />
+    <Property Name="sabor2" Type="varchar" MaxLength="50" />
+    <Property Name="sabor3" Type="varchar" MaxLength="50" />
+    <Property Name="sabor4" Type="varchar" MaxLength="50" />
+    <Property Name="borda" Type="varchar" MaxLength="50" />
+    <Property Name="bebidaPreco" Type="varchar" MaxLength="50" />
+    <Property Name="formaPagamento" Type="varchar" MaxLength="50" />
+    <Property Name="pizzaTamanhaPreco" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="pagamento">
     <Key>
       <PropertyRef Name="id" />
@@ -143,6 +159,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_entregas_cliente">
+    <End Role="dados_cliente" Type="Self.dados_cliente" Multiplicity="0..1" />
+    <End Role="entregas" Type="Self.entregas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dados_cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="entregas">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="pro_chef_webModelStoreContainer">
     <EntitySet Name="administrador" EntityType="Self.administrador" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="dados_bebida" EntityType="Self.dados_bebida" Schema="dbo" store:Type="Tables" />
@@ -152,6 +180,7 @@
     <EntitySet Name="dados_pizza" EntityType="Self.dados_pizza" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="dados_pizza_tamanho" EntityType="Self.dados_pizza_tamanho" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="entregador" EntityType="Self.entregador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="entregas" EntityType="Self.entregas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="pagamento" EntityType="Self.pagamento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="preco_bebidas" EntityType="Self.preco_bebidas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipo_usuario" EntityType="Self.tipo_usuario" Schema="dbo" store:Type="Tables" />
@@ -166,6 +195,10 @@
     <AssociationSet Name="FK_dados_pedido_pagamento" Association="Self.FK_dados_pedido_pagamento">
       <End Role="pagamento" EntitySet="pagamento" />
       <End Role="dados_pedido" EntitySet="dados_pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_entregas_cliente" Association="Self.FK_entregas_cliente">
+      <End Role="dados_cliente" EntitySet="dados_cliente" />
+      <End Role="entregas" EntitySet="entregas" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

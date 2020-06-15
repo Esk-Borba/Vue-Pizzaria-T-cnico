@@ -13,11 +13,13 @@ namespace Sa_pro_chefe.Controllers
     public class PedidoController : ApiController
     {
         // GET: api/Pedido
-        public IEnumerable<string> Get()
+        public IEnumerable<dynamic> Get()
         {
             using (pro_chef_webEntities bd = new pro_chef_webEntities())
             {
-                return new string[] { "value1", "value2" };
+                var pedidos = from ped in bd.entregas
+                              select new { ped.id, ped.bebida, ped.borda, ped.id_cliente, ped.cliente, ped.sabor1, ped.sabor2, ped.sabor3, ped.sabor4, ped.formaPagamento };
+                return pedidos.ToList();
             }
         }
 
@@ -28,8 +30,14 @@ namespace Sa_pro_chefe.Controllers
         }
 
         // POST: api/Pedido
-        public void Post([FromBody]string value)
+        public string Post([FromBody]entregas entrega)
         {
+            using (pro_chef_webEntities bd = new pro_chef_webEntities())
+            {
+                bd.entregas.Add(entrega);
+                bd.SaveChanges();
+                return "Salvo com Sucesso";
+            }
         }
 
         // PUT: api/Pedido/5

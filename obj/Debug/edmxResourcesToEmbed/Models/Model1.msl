@@ -94,6 +94,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="entregas">
+      <EntityTypeMapping TypeName="pro_chef_webModel.entregas">
+        <MappingFragment StoreEntitySet="entregas">
+          <ScalarProperty Name="pizzaTamanhaPreco" ColumnName="pizzaTamanhaPreco" />
+          <ScalarProperty Name="formaPagamento" ColumnName="formaPagamento" />
+          <ScalarProperty Name="bebidaPreco" ColumnName="bebidaPreco" />
+          <ScalarProperty Name="borda" ColumnName="borda" />
+          <ScalarProperty Name="sabor4" ColumnName="sabor4" />
+          <ScalarProperty Name="sabor3" ColumnName="sabor3" />
+          <ScalarProperty Name="sabor2" ColumnName="sabor2" />
+          <ScalarProperty Name="sabor1" ColumnName="sabor1" />
+          <ScalarProperty Name="cliente" ColumnName="cliente" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="pagamento">
       <EntityTypeMapping TypeName="pro_chef_webModel.pagamento">
         <MappingFragment StoreEntitySet="pagamento">

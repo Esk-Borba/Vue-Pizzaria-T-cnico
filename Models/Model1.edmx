@@ -90,6 +90,22 @@
           <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="senha" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="entregas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cliente" Type="int" />
+          <Property Name="cliente" Type="varchar" MaxLength="50" />
+          <Property Name="sabor1" Type="varchar" MaxLength="50" />
+          <Property Name="sabor2" Type="varchar" MaxLength="50" />
+          <Property Name="sabor3" Type="varchar" MaxLength="50" />
+          <Property Name="sabor4" Type="varchar" MaxLength="50" />
+          <Property Name="borda" Type="varchar" MaxLength="50" />
+          <Property Name="formaPagamento" Type="varchar" MaxLength="50" />
+          <Property Name="pizzaTamanhaPreco" Type="varchar" MaxLength="50" />
+          <Property Name="bebida" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="pagamento">
           <Key>
             <PropertyRef Name="id" />
@@ -148,6 +164,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_entregas_cliente">
+          <End Role="dados_cliente" Type="Self.dados_cliente" Multiplicity="0..1" />
+          <End Role="entregas" Type="Self.entregas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dados_cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="entregas">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="pro_chef_webModelStoreContainer">
           <EntitySet Name="administrador" EntityType="Self.administrador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dados_bebida" EntityType="Self.dados_bebida" Schema="dbo" store:Type="Tables" />
@@ -157,6 +185,7 @@
           <EntitySet Name="dados_pizza" EntityType="Self.dados_pizza" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dados_pizza_tamanho" EntityType="Self.dados_pizza_tamanho" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="entregador" EntityType="Self.entregador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="entregas" EntityType="Self.entregas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pagamento" EntityType="Self.pagamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="preco_bebidas" EntityType="Self.preco_bebidas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_usuario" EntityType="Self.tipo_usuario" Schema="dbo" store:Type="Tables" />
@@ -172,6 +201,10 @@
             <End Role="pagamento" EntitySet="pagamento" />
             <End Role="dados_pedido" EntitySet="dados_pedido" />
           </AssociationSet>
+          <AssociationSet Name="FK_entregas_cliente" Association="Self.FK_entregas_cliente">
+            <End Role="dados_cliente" EntitySet="dados_cliente" />
+            <End Role="entregas" EntitySet="entregas" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -186,12 +219,17 @@
           <EntitySet Name="dados_pizza" EntityType="pro_chef_webModel.dados_pizza" />
           <EntitySet Name="dados_pizza_tamanho" EntityType="pro_chef_webModel.dados_pizza_tamanho" />
           <EntitySet Name="entregador" EntityType="pro_chef_webModel.entregador" />
+          <EntitySet Name="entregas" EntityType="pro_chef_webModel.entregas" />
           <EntitySet Name="pagamento" EntityType="pro_chef_webModel.pagamento" />
           <EntitySet Name="preco_bebidas" EntityType="pro_chef_webModel.preco_bebidas" />
           <EntitySet Name="tipo_usuario" EntityType="pro_chef_webModel.tipo_usuario" />
           <AssociationSet Name="FK_dados_pedido_admin" Association="pro_chef_webModel.FK_dados_pedido_admin">
             <End Role="administrador" EntitySet="administrador" />
             <End Role="dados_pedido" EntitySet="dados_pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_entregas_cliente" Association="pro_chef_webModel.FK_entregas_cliente">
+            <End Role="dados_cliente" EntitySet="dados_cliente" />
+            <End Role="entregas" EntitySet="entregas" />
           </AssociationSet>
           <AssociationSet Name="FK_dados_pedido_entregador" Association="pro_chef_webModel.FK_dados_pedido_entregador">
             <End Role="entregador" EntitySet="entregador" />
@@ -245,6 +283,7 @@
           <Property Name="cidade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="uf" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
           <Property Name="tipo_usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="entregas" Relationship="pro_chef_webModel.FK_entregas_cliente" FromRole="dados_cliente" ToRole="entregas" />
         </EntityType>
         <EntityType Name="dados_pedido">
           <Key>
@@ -292,6 +331,23 @@
           <Property Name="senha" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="dados_pedido" Relationship="pro_chef_webModel.FK_dados_pedido_entregador" FromRole="entregador" ToRole="dados_pedido" />
         </EntityType>
+        <EntityType Name="entregas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cliente" Type="Int32" />
+          <Property Name="cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sabor1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sabor2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sabor3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sabor4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="borda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="formaPagamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pizzaTamanhaPreco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bebida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dados_cliente" Relationship="pro_chef_webModel.FK_entregas_cliente" FromRole="entregas" ToRole="dados_cliente" />
+        </EntityType>
         <EntityType Name="pagamento">
           <Key>
             <PropertyRef Name="id" />
@@ -324,6 +380,18 @@
             </Principal>
             <Dependent Role="dados_pedido">
               <PropertyRef Name="admin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_entregas_cliente">
+          <End Type="pro_chef_webModel.dados_cliente" Role="dados_cliente" Multiplicity="0..1" />
+          <End Type="pro_chef_webModel.entregas" Role="entregas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dados_cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="entregas">
+              <PropertyRef Name="id_cliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -446,6 +514,23 @@
                 <ScalarProperty Name="disponibilidade" ColumnName="disponibilidade" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="entregas">
+            <EntityTypeMapping TypeName="pro_chef_webModel.entregas">
+              <MappingFragment StoreEntitySet="entregas">
+                <ScalarProperty Name="bebida" ColumnName="bebida" />
+                <ScalarProperty Name="pizzaTamanhaPreco" ColumnName="pizzaTamanhaPreco" />
+                <ScalarProperty Name="formaPagamento" ColumnName="formaPagamento" />
+                <ScalarProperty Name="borda" ColumnName="borda" />
+                <ScalarProperty Name="sabor4" ColumnName="sabor4" />
+                <ScalarProperty Name="sabor3" ColumnName="sabor3" />
+                <ScalarProperty Name="sabor2" ColumnName="sabor2" />
+                <ScalarProperty Name="sabor1" ColumnName="sabor1" />
+                <ScalarProperty Name="cliente" ColumnName="cliente" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

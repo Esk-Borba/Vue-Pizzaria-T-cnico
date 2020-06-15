@@ -14,6 +14,12 @@ namespace Sa_pro_chefe.Models
     
     public partial class dados_cliente
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public dados_cliente()
+        {
+            this.entregas = new HashSet<entregas>();
+        }
+    
         public int id { get; set; }
         public string cpf { get; set; }
         public string nome { get; set; }
@@ -27,5 +33,8 @@ namespace Sa_pro_chefe.Models
         public string cidade { get; set; }
         public string uf { get; set; }
         public int tipo_usuario { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<entregas> entregas { get; set; }
     }
 }

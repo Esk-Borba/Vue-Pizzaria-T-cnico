@@ -33,6 +33,7 @@ namespace Sa_pro_chefe.Models
         public virtual DbSet<dados_pizza> dados_pizza { get; set; }
         public virtual DbSet<dados_pizza_tamanho> dados_pizza_tamanho { get; set; }
         public virtual DbSet<entregador> entregador { get; set; }
+        public virtual DbSet<entregas> entregas { get; set; }
         public virtual DbSet<pagamento> pagamento { get; set; }
         public virtual DbSet<preco_bebidas> preco_bebidas { get; set; }
         public virtual DbSet<tipo_usuario> tipo_usuario { get; set; }
