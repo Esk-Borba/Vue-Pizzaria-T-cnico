@@ -133,9 +133,9 @@
     <Property Name="sabor3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="sabor4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="borda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="bebidaPreco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="formaPagamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="pizzaTamanhaPreco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pizzaTamanhoPreco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bebida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="dados_cliente" Relationship="pro_chef_webModel.FK_entregas_cliente" FromRole="entregas" ToRole="dados_cliente" />
   </EntityType>
   <EntityType Name="pagamento">

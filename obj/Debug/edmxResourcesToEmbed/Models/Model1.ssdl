@@ -97,9 +97,9 @@
     <Property Name="sabor3" Type="varchar" MaxLength="50" />
     <Property Name="sabor4" Type="varchar" MaxLength="50" />
     <Property Name="borda" Type="varchar" MaxLength="50" />
-    <Property Name="bebidaPreco" Type="varchar" MaxLength="50" />
     <Property Name="formaPagamento" Type="varchar" MaxLength="50" />
-    <Property Name="pizzaTamanhaPreco" Type="varchar" MaxLength="50" />
+    <Property Name="pizzaTamanhoPreco" Type="varchar" MaxLength="50" />
+    <Property Name="bebida" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="pagamento">
     <Key>

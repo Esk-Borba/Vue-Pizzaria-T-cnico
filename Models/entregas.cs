@@ -23,7 +23,7 @@ namespace Sa_pro_chefe.Models
         public string sabor4 { get; set; }
         public string borda { get; set; }
         public string formaPagamento { get; set; }
-        public string pizzaTamanhaPreco { get; set; }
+        public string pizzaTamanhoPreco { get; set; }
         public string bebida { get; set; }
     
         public virtual dados_cliente dados_cliente { get; set; }
