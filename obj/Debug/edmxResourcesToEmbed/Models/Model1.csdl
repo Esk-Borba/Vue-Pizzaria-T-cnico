@@ -136,6 +136,7 @@
     <Property Name="formaPagamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="pizzaTamanhoPreco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="bebida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bebidaPrecoTamanho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="dados_cliente" Relationship="pro_chef_webModel.FK_entregas_cliente" FromRole="entregas" ToRole="dados_cliente" />
   </EntityType>
   <EntityType Name="pagamento">
