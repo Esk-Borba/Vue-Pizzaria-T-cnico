@@ -28,12 +28,14 @@ namespace Sa_pro_chefe.Models
         public string senha { get; set; }
         public string cep { get; set; }
         public string logradouro { get; set; }
+        public string numero { get; set; }
         public string complemento { get; set; }
         public string bairro { get; set; }
         public string cidade { get; set; }
         public string uf { get; set; }
         public int tipo_usuario { get; set; }
     
+        public virtual tipo_usuario tipo_usuario1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<entregas> entregas { get; set; }
     }

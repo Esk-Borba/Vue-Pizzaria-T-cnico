@@ -14,7 +14,22 @@ namespace Sa_pro_chefe.Models
     
     public partial class tipo_usuario
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tipo_usuario()
+        {
+            this.administrador = new HashSet<administrador>();
+            this.dados_cliente = new HashSet<dados_cliente>();
+            this.entregador = new HashSet<entregador>();
+        }
+    
         public int id { get; set; }
         public string tipo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<administrador> administrador { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<dados_cliente> dados_cliente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<entregador> entregador { get; set; }
     }
 }

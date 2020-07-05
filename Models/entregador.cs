@@ -30,5 +30,6 @@ namespace Sa_pro_chefe.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<dados_pedido> dados_pedido { get; set; }
+        public virtual tipo_usuario tipo_usuario1 { get; set; }
     }
 }

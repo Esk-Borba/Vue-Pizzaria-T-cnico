@@ -19,7 +19,7 @@ namespace Sa_pro_chefe.Controllers
             using (pro_chef_webEntities bd = new pro_chef_webEntities())
             {
                 var usuario = from user in bd.dados_cliente
-                              select new { user.id, user.cpf, user.nome, user.telefone, user.usuario, user.senha, user.cep, user.logradouro, user.complemento, user.bairro, user.cidade, user.uf, user.tipo_usuario };
+                              select new { user.id, user.cpf, user.nome, user.telefone, user.usuario, user.senha, user.cep, user.logradouro, user.complemento, user.bairro, user.cidade, user.uf, user.tipo_usuario, user.numero };
                 return usuario.ToList();
             }
             
@@ -55,6 +55,7 @@ namespace Sa_pro_chefe.Controllers
                 userAlterar.senha = user.senha;
                 userAlterar.cep = user.cep;
                 userAlterar.logradouro = user.logradouro;
+                userAlterar.numero = user.numero;
                 userAlterar.complemento = user.complemento;
                 userAlterar.bairro = user.bairro;
                 userAlterar.cidade = user.cidade;

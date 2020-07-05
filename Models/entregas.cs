@@ -17,6 +17,7 @@ namespace Sa_pro_chefe.Models
         public int id { get; set; }
         public Nullable<int> id_cliente { get; set; }
         public string cliente { get; set; }
+        public string endereco { get; set; }
         public string sabor1 { get; set; }
         public string sabor2 { get; set; }
         public string sabor3 { get; set; }

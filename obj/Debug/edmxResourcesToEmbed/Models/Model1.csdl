@@ -13,9 +13,17 @@
     <EntitySet Name="pagamento" EntityType="pro_chef_webModel.pagamento" />
     <EntitySet Name="preco_bebidas" EntityType="pro_chef_webModel.preco_bebidas" />
     <EntitySet Name="tipo_usuario" EntityType="pro_chef_webModel.tipo_usuario" />
+    <AssociationSet Name="FK_administrador_tipo_usuario" Association="pro_chef_webModel.FK_administrador_tipo_usuario">
+      <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+      <End Role="administrador" EntitySet="administrador" />
+    </AssociationSet>
     <AssociationSet Name="FK_dados_pedido_admin" Association="pro_chef_webModel.FK_dados_pedido_admin">
       <End Role="administrador" EntitySet="administrador" />
       <End Role="dados_pedido" EntitySet="dados_pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dados_cliente_tipo_usuario" Association="pro_chef_webModel.FK_dados_cliente_tipo_usuario">
+      <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+      <End Role="dados_cliente" EntitySet="dados_cliente" />
     </AssociationSet>
     <AssociationSet Name="FK_entregas_cliente" Association="pro_chef_webModel.FK_entregas_cliente">
       <End Role="dados_cliente" EntitySet="dados_cliente" />
@@ -29,6 +37,10 @@
       <End Role="pagamento" EntitySet="pagamento" />
       <End Role="dados_pedido" EntitySet="dados_pedido" />
     </AssociationSet>
+    <AssociationSet Name="FK_entregador_tipo_usuario" Association="pro_chef_webModel.FK_entregador_tipo_usuario">
+      <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+      <End Role="entregador" EntitySet="entregador" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="administrador">
     <Key>
@@ -38,7 +50,8 @@
     <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="senha" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="tipo_usuario" Type="Int32" />
+    <Property Name="tipo_usuario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tipo_usuario1" Relationship="pro_chef_webModel.FK_administrador_tipo_usuario" FromRole="administrador" ToRole="tipo_usuario" />
     <NavigationProperty Name="dados_pedido" Relationship="pro_chef_webModel.FK_dados_pedido_admin" FromRole="administrador" ToRole="dados_pedido" />
   </EntityType>
   <EntityType Name="dados_bebida">
@@ -68,11 +81,13 @@
     <Property Name="senha" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="cep" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="logradouro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="complemento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="bairro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="cidade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="uf" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
     <Property Name="tipo_usuario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tipo_usuario1" Relationship="pro_chef_webModel.FK_dados_cliente_tipo_usuario" FromRole="dados_cliente" ToRole="tipo_usuario" />
     <NavigationProperty Name="entregas" Relationship="pro_chef_webModel.FK_entregas_cliente" FromRole="dados_cliente" ToRole="entregas" />
   </EntityType>
   <EntityType Name="dados_pedido">
@@ -120,6 +135,7 @@
     <Property Name="usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="senha" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="dados_pedido" Relationship="pro_chef_webModel.FK_dados_pedido_entregador" FromRole="entregador" ToRole="dados_pedido" />
+    <NavigationProperty Name="tipo_usuario1" Relationship="pro_chef_webModel.FK_entregador_tipo_usuario" FromRole="entregador" ToRole="tipo_usuario" />
   </EntityType>
   <EntityType Name="entregas">
     <Key>
@@ -128,6 +144,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="id_cliente" Type="Int32" />
     <Property Name="cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="sabor1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="sabor2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="sabor3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -161,7 +178,22 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="administrador" Relationship="pro_chef_webModel.FK_administrador_tipo_usuario" FromRole="tipo_usuario" ToRole="administrador" />
+    <NavigationProperty Name="dados_cliente" Relationship="pro_chef_webModel.FK_dados_cliente_tipo_usuario" FromRole="tipo_usuario" ToRole="dados_cliente" />
+    <NavigationProperty Name="entregador" Relationship="pro_chef_webModel.FK_entregador_tipo_usuario" FromRole="tipo_usuario" ToRole="entregador" />
   </EntityType>
+  <Association Name="FK_administrador_tipo_usuario">
+    <End Type="pro_chef_webModel.tipo_usuario" Role="tipo_usuario" Multiplicity="1" />
+    <End Type="pro_chef_webModel.administrador" Role="administrador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="administrador">
+        <PropertyRef Name="tipo_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_dados_pedido_admin">
     <End Type="pro_chef_webModel.administrador" Role="administrador" Multiplicity="0..1" />
     <End Type="pro_chef_webModel.dados_pedido" Role="dados_pedido" Multiplicity="*" />
@@ -171,6 +203,18 @@
       </Principal>
       <Dependent Role="dados_pedido">
         <PropertyRef Name="admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dados_cliente_tipo_usuario">
+    <End Type="pro_chef_webModel.tipo_usuario" Role="tipo_usuario" Multiplicity="1" />
+    <End Type="pro_chef_webModel.dados_cliente" Role="dados_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dados_cliente">
+        <PropertyRef Name="tipo_usuario" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -207,6 +251,18 @@
       </Principal>
       <Dependent Role="dados_pedido">
         <PropertyRef Name="tipo_pagamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_entregador_tipo_usuario">
+    <End Type="pro_chef_webModel.tipo_usuario" Role="tipo_usuario" Multiplicity="1" />
+    <End Type="pro_chef_webModel.entregador" Role="entregador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="entregador">
+        <PropertyRef Name="tipo_usuario" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

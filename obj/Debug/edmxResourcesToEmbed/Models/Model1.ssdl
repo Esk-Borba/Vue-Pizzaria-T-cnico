@@ -8,7 +8,7 @@
     <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="senha" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="tipo_usuario" Type="int" />
+    <Property Name="tipo_usuario" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="dados_bebida">
     <Key>
@@ -37,6 +37,7 @@
     <Property Name="senha" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="cep" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="logradouro" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="numero" Type="varchar" MaxLength="50" />
     <Property Name="complemento" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="bairro" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="cidade" Type="varchar" MaxLength="50" Nullable="false" />
@@ -92,6 +93,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_cliente" Type="int" />
     <Property Name="cliente" Type="varchar" MaxLength="50" />
+    <Property Name="endereco" Type="varchar" MaxLength="50" />
     <Property Name="sabor1" Type="varchar" MaxLength="50" />
     <Property Name="sabor2" Type="varchar" MaxLength="50" />
     <Property Name="sabor3" Type="varchar" MaxLength="50" />
@@ -124,6 +126,30 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tipo" Type="varchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK_administrador_tipo_usuario">
+    <End Role="tipo_usuario" Type="Self.tipo_usuario" Multiplicity="1" />
+    <End Role="administrador" Type="Self.administrador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="administrador">
+        <PropertyRef Name="tipo_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dados_cliente_tipo_usuario">
+    <End Role="tipo_usuario" Type="Self.tipo_usuario" Multiplicity="1" />
+    <End Role="dados_cliente" Type="Self.dados_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dados_cliente">
+        <PropertyRef Name="tipo_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_dados_pedido_admin">
     <End Role="administrador" Type="Self.administrador" Multiplicity="0..1" />
     <End Role="dados_pedido" Type="Self.dados_pedido" Multiplicity="*" />
@@ -160,6 +186,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_entregador_tipo_usuario">
+    <End Role="tipo_usuario" Type="Self.tipo_usuario" Multiplicity="1" />
+    <End Role="entregador" Type="Self.entregador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="entregador">
+        <PropertyRef Name="tipo_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_entregas_cliente">
     <End Role="dados_cliente" Type="Self.dados_cliente" Multiplicity="0..1" />
     <End Role="entregas" Type="Self.entregas" Multiplicity="*" />
@@ -185,6 +223,14 @@
     <EntitySet Name="pagamento" EntityType="Self.pagamento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="preco_bebidas" EntityType="Self.preco_bebidas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipo_usuario" EntityType="Self.tipo_usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_administrador_tipo_usuario" Association="Self.FK_administrador_tipo_usuario">
+      <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+      <End Role="administrador" EntitySet="administrador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dados_cliente_tipo_usuario" Association="Self.FK_dados_cliente_tipo_usuario">
+      <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+      <End Role="dados_cliente" EntitySet="dados_cliente" />
+    </AssociationSet>
     <AssociationSet Name="FK_dados_pedido_admin" Association="Self.FK_dados_pedido_admin">
       <End Role="administrador" EntitySet="administrador" />
       <End Role="dados_pedido" EntitySet="dados_pedido" />
@@ -196,6 +242,10 @@
     <AssociationSet Name="FK_dados_pedido_pagamento" Association="Self.FK_dados_pedido_pagamento">
       <End Role="pagamento" EntitySet="pagamento" />
       <End Role="dados_pedido" EntitySet="dados_pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_entregador_tipo_usuario" Association="Self.FK_entregador_tipo_usuario">
+      <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+      <End Role="entregador" EntitySet="entregador" />
     </AssociationSet>
     <AssociationSet Name="FK_entregas_cliente" Association="Self.FK_entregas_cliente">
       <End Role="dados_cliente" EntitySet="dados_cliente" />
