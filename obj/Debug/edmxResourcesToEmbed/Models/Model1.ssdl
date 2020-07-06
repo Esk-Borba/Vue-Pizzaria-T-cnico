@@ -117,7 +117,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tamanho" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="preco" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="preco" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="tipo_usuario">
     <Key>

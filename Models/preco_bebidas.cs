@@ -16,6 +16,6 @@ namespace Sa_pro_chefe.Models
     {
         public int id { get; set; }
         public string tamanho { get; set; }
-        public string preco { get; set; }
+        public int preco { get; set; }
     }
 }
