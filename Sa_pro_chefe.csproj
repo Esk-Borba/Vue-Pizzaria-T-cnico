@@ -178,6 +178,7 @@
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\PizzaController.cs" />
     <Compile Include="Controllers\PrecoTamanhoBebidasController.cs" />
+    <Compile Include="Controllers\TamanhoBebidasController.cs" />
     <Compile Include="Controllers\TamanhoPizzaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
