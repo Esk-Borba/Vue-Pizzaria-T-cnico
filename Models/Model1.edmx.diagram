@@ -5,17 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8438851e14794f01bc45cc90e4388456" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="pro_chef_webModel.administrador" Width="1.5" PointX="3" PointY="6.875" />
-        <EntityTypeShape EntityType="pro_chef_webModel.dados_bebida" Width="1.5" PointX="7.75" PointY="0.75" />
-        <EntityTypeShape EntityType="pro_chef_webModel.dados_borda" Width="1.5" PointX="7.75" PointY="3.75" />
-        <EntityTypeShape EntityType="pro_chef_webModel.dados_cliente" Width="1.5" PointX="3" PointY="2" />
-        <EntityTypeShape EntityType="pro_chef_webModel.dados_pedido" Width="1.5" PointX="5.25" PointY="8" />
-        <EntityTypeShape EntityType="pro_chef_webModel.dados_pizza" Width="1.5" PointX="7.75" PointY="6.75" />
-        <EntityTypeShape EntityType="pro_chef_webModel.dados_pizza_tamanho" Width="1.5" PointX="9.75" PointY="0.75" />
-        <EntityTypeShape EntityType="pro_chef_webModel.entregador" Width="1.5" PointX="3" PointY="10" />
-        <EntityTypeShape EntityType="pro_chef_webModel.entregas" Width="1.5" PointX="5.25" PointY="2.125" />
-        <EntityTypeShape EntityType="pro_chef_webModel.pagamento" Width="1.5" PointX="3" PointY="14" />
-        <EntityTypeShape EntityType="pro_chef_webModel.preco_bebidas" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="pro_chef_webModel.administrador" Width="1.5" PointX="3" PointY="2" />
+        <EntityTypeShape EntityType="pro_chef_webModel.dados_bebida" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pro_chef_webModel.dados_borda" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pro_chef_webModel.dados_cliente" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="pro_chef_webModel.dados_pedido" Width="1.5" PointX="5.25" PointY="3.125" />
+        <EntityTypeShape EntityType="pro_chef_webModel.dados_pizza" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="pro_chef_webModel.dados_pizza_tamanho" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="pro_chef_webModel.entregador" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="pro_chef_webModel.entregas" Width="1.5" PointX="5.25" PointY="8.75" />
+        <EntityTypeShape EntityType="pro_chef_webModel.pagamento" Width="1.5" PointX="3" PointY="14.125" />
+        <EntityTypeShape EntityType="pro_chef_webModel.preco_bebidas" Width="1.5" PointX="9.75" PointY="0.75" />
         <EntityTypeShape EntityType="pro_chef_webModel.tipo_usuario" Width="1.5" PointX="0.75" PointY="6.375" />
         <AssociationConnector Association="pro_chef_webModel.FK_administrador_tipo_usuario" />
         <AssociationConnector Association="pro_chef_webModel.FK_dados_pedido_admin" />

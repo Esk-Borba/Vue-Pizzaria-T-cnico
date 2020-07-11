@@ -98,6 +98,7 @@
     <EntitySetMapping Name="entregas">
       <EntityTypeMapping TypeName="pro_chef_webModel.entregas">
         <MappingFragment StoreEntitySet="entregas">
+          <ScalarProperty Name="finalizado" ColumnName="finalizado" />
           <ScalarProperty Name="bebidaPrecoTamanho" ColumnName="bebidaPrecoTamanho" />
           <ScalarProperty Name="bebida" ColumnName="bebida" />
           <ScalarProperty Name="pizzaTamanhoPreco" ColumnName="pizzaTamanhoPreco" />

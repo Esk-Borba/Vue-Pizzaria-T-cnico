@@ -108,6 +108,7 @@
           <Property Name="pizzaTamanhoPreco" Type="varchar" MaxLength="50" />
           <Property Name="bebida" Type="varchar" MaxLength="50" />
           <Property Name="bebidaPrecoTamanho" Type="varchar" MaxLength="50" />
+          <Property Name="finalizado" Type="bit" />
         </EntityType>
         <EntityType Name="pagamento">
           <Key>
@@ -416,6 +417,7 @@
           <Property Name="bebida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="bebidaPrecoTamanho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="dados_cliente" Relationship="pro_chef_webModel.FK_entregas_cliente" FromRole="entregas" ToRole="dados_cliente" />
+          <Property Name="finalizado" Type="Boolean" />
         </EntityType>
         <EntityType Name="pagamento">
           <Key>
@@ -630,6 +632,7 @@
           <EntitySetMapping Name="entregas">
             <EntityTypeMapping TypeName="pro_chef_webModel.entregas">
               <MappingFragment StoreEntitySet="entregas">
+                <ScalarProperty Name="finalizado" ColumnName="finalizado" />
                 <ScalarProperty Name="bebidaPrecoTamanho" ColumnName="bebidaPrecoTamanho" />
                 <ScalarProperty Name="bebida" ColumnName="bebida" />
                 <ScalarProperty Name="pizzaTamanhoPreco" ColumnName="pizzaTamanhoPreco" />

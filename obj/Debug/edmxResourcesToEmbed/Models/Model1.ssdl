@@ -103,6 +103,7 @@
     <Property Name="pizzaTamanhoPreco" Type="varchar" MaxLength="50" />
     <Property Name="bebida" Type="varchar" MaxLength="50" />
     <Property Name="bebidaPrecoTamanho" Type="varchar" MaxLength="50" />
+    <Property Name="finalizado" Type="bit" />
   </EntityType>
   <EntityType Name="pagamento">
     <Key>

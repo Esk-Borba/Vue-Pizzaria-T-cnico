@@ -18,7 +18,7 @@ namespace Sa_pro_chefe.Controllers
             using (pro_chef_webEntities bd = new pro_chef_webEntities())
             {
                 var pedidos = from ped in bd.entregas
-                              select new { ped.id, ped.bebida, ped.borda, ped.id_cliente, ped.cliente, ped.endereco ,ped.sabor1, ped.sabor2, ped.sabor3, ped.sabor4, ped.formaPagamento, ped.pizzaTamanhoPreco, ped.bebidaPrecoTamanho };
+                              select new { ped.id, ped.bebida, ped.borda, ped.id_cliente, ped.cliente, ped.endereco ,ped.sabor1, ped.sabor2, ped.sabor3, ped.sabor4, ped.formaPagamento, ped.pizzaTamanhoPreco, ped.bebidaPrecoTamanho, ped.finalizado};
                 return pedidos.ToList();
             }
         }
@@ -41,8 +41,15 @@ namespace Sa_pro_chefe.Controllers
         }
 
         // PUT: api/Pedido/5
-        public void Put(int id, [FromBody]string value)
+        public string Put(int id, [FromBody]entregas entrega)
         {
+            using (pro_chef_webEntities bd = new pro_chef_webEntities())
+            {
+                entregas entregaAlterar = bd.entregas.Find(id);
+                entregaAlterar.finalizado = entrega.finalizado;
+                bd.SaveChanges();
+                return "Salvo com sucesso";
+            }
         }
 
         // DELETE: api/Pedido/5
