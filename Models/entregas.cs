@@ -28,6 +28,7 @@ namespace Sa_pro_chefe.Models
         public string bebida { get; set; }
         public string bebidaPrecoTamanho { get; set; }
         public Nullable<bool> finalizado { get; set; }
+        public string valorTotal { get; set; }
     
         public virtual dados_cliente dados_cliente { get; set; }
     }

@@ -104,6 +104,7 @@
     <Property Name="bebida" Type="varchar" MaxLength="50" />
     <Property Name="bebidaPrecoTamanho" Type="varchar" MaxLength="50" />
     <Property Name="finalizado" Type="bit" />
+    <Property Name="valorTotal" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="pagamento">
     <Key>
