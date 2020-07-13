@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Compilation;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Sa_pro_chefe.Models;
@@ -53,8 +54,15 @@ namespace Sa_pro_chefe.Controllers
         }
 
         // DELETE: api/Pedido/5
-        public void Delete(int id)
+        public string Delete(int id)
         {
+            using(pro_chef_webEntities bd = new pro_chef_webEntities())
+            {
+                bd.entregas.Remove(bd.entregas.Find(id));
+                bd.SaveChanges();
+                return "Removido com Sucesso!";
+            }
+
         }
     }
 }
